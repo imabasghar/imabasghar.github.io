@@ -18,11 +18,9 @@
     --error:#BA1A1A; --error-container:#FFDAD6; --on-error-container:#410002;
     --success:#146C2E; --success-container:#C6F0C2; --on-success-container:#052110;
     --warn:#7A5900; --warn-container:#FFDF9E; --on-warn-container:#261900;
-    /* elevation */
     --e1:0 1px 2px rgba(0,0,0,.30),0 1px 3px 1px rgba(0,0,0,.15);
     --e2:0 1px 2px rgba(0,0,0,.30),0 2px 6px 2px rgba(0,0,0,.15);
     --e3:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.30);
-    /* shape */
     --r-xs:8px; --r-sm:12px; --r-md:16px; --r-xl:28px; --pill:999px;
     --font:Roboto,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
   }
@@ -31,32 +29,25 @@
   body{margin:0;background:var(--surface);color:var(--on-surface);font-family:var(--font);
     font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
 
-  /* type scale */
-  .display{font-size:36px;font-weight:500;line-height:1.1;letter-spacing:0;margin:0}
+  .display{font-size:36px;font-weight:500;line-height:1.1;margin:0}
   .headline{font-size:22px;font-weight:500;line-height:1.25;margin:0}
-  .title{font-size:16px;font-weight:600;line-height:1.3;margin:0}
-  .label-lg{font-size:14px;font-weight:600;letter-spacing:.01em}
-  .body{font-size:14px;font-weight:400;margin:0}
   .body-sm{font-size:13px;font-weight:400;margin:0}
   .overline{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
   .variant{color:var(--on-surface-variant)}
 
-  /* app bar */
   .appbar{position:sticky;top:0;z-index:5;background:var(--sc-low);border-bottom:1px solid var(--outline-variant)}
   .appbar .inner{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
   .avatar{width:44px;height:44px;flex:none;border-radius:var(--pill);background:var(--primary);color:var(--on-primary);
     display:flex;align-items:center;justify-content:center}
   .avatar svg{width:26px;height:26px;fill:currentColor}
   .appbar .ttl{display:flex;flex-direction:column;gap:1px;min-width:0}
-  .appbar .ttl .k{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--primary)}
+  .appbar .ttl .k{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--primary)}
   .appbar .ttl .n{font-size:18px;font-weight:600;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
   .page{max-width:1080px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:20px}
-
   .card{background:var(--sc-lowest);border-radius:var(--r-md);box-shadow:var(--e1)}
   .card.pad{padding:20px}
 
-  /* verdict hero */
   .verdict{border-radius:var(--r-xl);padding:22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;
     box-shadow:var(--e2);transition:background .3s,color .3s}
   .verdict.in{background:var(--success-container);color:var(--on-success-container)}
@@ -72,8 +63,10 @@
   .vstatus svg{width:26px;height:26px;fill:currentColor;flex:none}
   .vpts{font-size:15px}.vpts b{font-weight:700}
   .vdetail{font-size:13px;opacity:.9}
+  .banked{font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;opacity:.85}
+  .banked svg{width:15px;height:15px;fill:currentColor}
 
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
   .chip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-xs);
     background:var(--sc-lowest);border:1px solid var(--outline-variant);min-height:44px}
   .chip .cn{display:flex;flex-direction:column;line-height:1.15}
@@ -85,7 +78,6 @@
   .chip.loss{background:var(--error-container);border-color:transparent}
   .chip.loss svg{fill:var(--error)} .chip.loss .cn .o{color:var(--on-error-container)}
 
-  /* segmented buttons */
   .field-label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     color:var(--on-surface-variant);margin-bottom:8px}
   .segmented{display:inline-flex;flex-wrap:wrap;border-radius:var(--pill);overflow:hidden;border:1px solid var(--outline)}
@@ -100,10 +92,8 @@
   .seg-btn .ck{width:16px;height:16px;fill:currentColor;display:none} .seg-btn.on .ck{display:inline}
   .note{margin-top:10px}
 
-  /* section header */
   .sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
 
-  /* table */
   .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
   table{width:100%;border-collapse:collapse;min-width:340px}
   thead th{font-size:11px;font-weight:600;color:var(--on-surface-variant);text-transform:uppercase;letter-spacing:.04em;
@@ -123,7 +113,6 @@
   .qb{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:2px 8px;border-radius:var(--pill);
     background:var(--success-container);color:var(--on-success-container);margin-left:7px;vertical-align:middle}
 
-  /* fixtures */
   .round + .round{margin-top:18px}
   .round-h{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:10px;margin-bottom:10px;
     border-bottom:1px solid var(--outline-variant)}
@@ -144,11 +133,11 @@
   .vs{display:flex;align-items:center;justify-content:center;padding:0 12px;font-size:10px;font-weight:700;
     color:var(--on-surface-variant);background:var(--sc)}
   .game.der .vs{color:var(--on-primary-container);background:var(--primary-container)}
-  .game.danger .vs{color:var(--on-warn-container);background:var(--warn-container)}
+  .game.swing .vs{color:var(--on-warn-container);background:var(--warn-container)}
   .tags{display:flex;gap:6px;flex-wrap:wrap;padding-left:2px}
   .tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 9px;border-radius:var(--pill);letter-spacing:.03em}
   .tag.must{background:var(--primary-container);color:var(--on-primary-container)}
-  .tag.danger{background:var(--warn-container);color:var(--on-warn-container)}
+  .tag.swing{background:var(--warn-container);color:var(--on-warn-container)}
 
   .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--on-surface-variant)}
   .legend .sw{display:inline-flex;align-items:center;gap:7px}
@@ -181,7 +170,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.9 9h-4.02a15.8 15.8 0 0 0-2.02-6.9A8.02 8.02 0 0 1 19.9 11ZM12 4.1c1.2 1.8 1.97 4.3 2.14 6.9H9.86C10.03 8.4 10.8 5.9 12 4.1ZM4.1 13h4.02c.2 2.62.98 5.05 2.02 6.9A8.02 8.02 0 0 1 4.1 13Zm0-2a8.02 8.02 0 0 1 6.04-6.9A15.8 15.8 0 0 0 8.12 11H4.1Zm9.76 8.9c1.04-1.85 1.82-4.28 2.02-6.9h4.02a8.02 8.02 0 0 1-6.04 6.9Z"/></svg>
       </span>
       <div class="ttl">
-        <span class="k">VVL 2026 · SL1M · Pool B</span>
+        <span class="k">VVL 2026 · SL1M · Pool B · After Round 14</span>
         <span class="n">Derrimut Knights Black — Road to Top 4</span>
       </div>
     </div>
@@ -189,7 +178,6 @@
 
   <div class="page">
 
-    <!-- verdict -->
     <section class="verdict in" id="verdict" aria-live="polite">
       <div class="postile">
         <div class="num" id="vPos">4<small>th</small></div>
@@ -199,26 +187,22 @@
         <div class="vstatus" id="vStatus"></div>
         <div class="vpts">Finishing on <b id="vPts">49</b> points.</div>
         <p class="vdetail" id="vDetail"></p>
-        <div>
-          <span class="overline variant">Must win all four</span>
-          <div class="chips" id="chips"></div>
-        </div>
+        <span class="banked"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Round 14 done — beat Phantoms twice. 2 games left:</span>
+        <div class="chips" id="chips"></div>
       </div>
     </section>
 
-    <!-- scenario -->
     <div>
       <span class="field-label">Scenario</span>
       <div class="segmented" role="group" aria-label="Scenario presets">
-        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win out, to form</button>
-        <button class="seg-btn" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>+ Monash slip</button>
+        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both, to form</button>
+        <button class="seg-btn" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both + the help</button>
         <button class="seg-btn" data-preset="C"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Dream run</button>
         <button class="seg-btn cau" data-preset="seed"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Play to seed</button>
       </div>
       <p class="note body-sm variant" id="presetNote"></p>
     </div>
 
-    <!-- main -->
     <div class="grid2">
       <section class="card pad">
         <div class="sh">
@@ -246,7 +230,7 @@
         <div id="fixtures"></div>
         <div class="legend">
           <span class="sw"><span class="tag must">MUST-WIN</span> Derrimut's games</span>
-          <span class="sw"><span class="tag danger">WATCH</span> upsets that can knock them out</span>
+          <span class="sw"><span class="tag swing">SWING</span> Volley Friends / Monash must drop one here</span>
         </div>
       </section>
     </div>
@@ -255,38 +239,34 @@
   </div>
 
 <script>
-// ---- data (Volleyball Victoria, after Round 13) ----
+// ---- base AFTER Round 14 (authoritative, Volleyball Victoria) ----
 const T = {
-  CAR:{n:"Carrum Downs Royals",p:52,sw:39,sl:5, pl:13,rk:1},
-  OAK:{n:"Oakleigh",           p:39,sw:31,sl:17,pl:12,rk:2},
-  ALL:{n:"Alliance Gold",      p:38,sw:30,sl:8, pl:11,rk:3},
-  VFU:{n:"Volley Friends Utd", p:36,sw:30,sl:19,pl:12,rk:4},
-  MST:{n:"Melbourne Storm",    p:36,sw:30,sl:21,pl:12,rk:5},
-  DAN:{n:"Dandenong White",    p:33,sw:28,sl:20,pl:12,rk:6},
-  MON:{n:"Monash Uni Grey",    p:33,sw:27,sl:21,pl:12,rk:7},
-  DER:{n:"Derrimut Knights Black",p:33,sw:23,sl:25,pl:12,rk:8},
-  REN:{n:"Melb Uni Renegades", p:30,sw:23,sl:21,pl:12,rk:9},
-  PHA:{n:"Phantoms",           p:27,sw:21,sl:21,pl:12,rk:10},
-  SGI:{n:"South Gippsland",    p:21,sw:12,sl:32,pl:12,rk:11},
-  MAZ:{n:"Mazenod",            p:14,sw:14,sl:33,pl:13,rk:12},
-  YAR:{n:"Yarra Ranges",       p:13,sw:4, sl:39,pl:13,rk:13},
-  LTR:{n:"La Trobe Uni Red",   p:12,sw:6, sl:36,pl:12,rk:14},
+  CAR:{n:"Carrum Downs Royals",p:56,sw:42,sl:6, pl:14,rk:1},
+  ALL:{n:"Alliance Gold",      p:43,sw:35,sl:11,pl:13,rk:2},
+  OAK:{n:"Oakleigh",           p:43,sw:34,sl:18,pl:13,rk:3},
+  DER:{n:"Derrimut Knights Black",p:41,sw:29,sl:27,pl:14,rk:4},
+  VFU:{n:"Volley Friends Utd", p:40,sw:33,sl:21,pl:13,rk:5},
+  DAN:{n:"Dandenong White",    p:37,sw:31,sl:20,pl:13,rk:6},
+  MON:{n:"Monash Uni Grey",    p:37,sw:30,sl:21,pl:13,rk:7},
+  MST:{n:"Melbourne Storm",    p:37,sw:31,sl:24,pl:13,rk:8},
+  REN:{n:"Melb Uni Renegades", p:31,sw:23,sl:24,pl:13,rk:9},
+  PHA:{n:"Phantoms",           p:29,sw:23,sl:27,pl:14,rk:10},
+  SGI:{n:"South Gippsland",    p:22,sw:12,sl:35,pl:13,rk:11},
+  MAZ:{n:"Mazenod",            p:15,sw:15,sl:36,pl:14,rk:12},
+  LTR:{n:"La Trobe Uni Red",   p:13,sw:6, sl:39,pl:13,rk:13},
+  YAR:{n:"Yarra Ranges",       p:13,sw:4, sl:39,pl:13,rk:14},
 };
 const R = [
-  {r:14,d:"Sat 18 Jul",g:[
-    {a:"OAK",b:"MAZ"},{a:"DER",b:"PHA",der:1},{a:"MON",b:"REN"},
-    {a:"VFU",b:"ALL",danger:1},{a:"CAR",b:"MST",danger:1},{a:"SGI",b:"DAN"},{a:"DER",b:"PHA",der:1},
-  ]},
   {r:15,d:"Sat 25 Jul",g:[
-    {a:"MST",b:"VFU",danger:1},{a:"REN",b:"OAK"},{a:"YAR",b:"SGI"},
-    {a:"LTR",b:"MON"},{a:"MAZ",b:"CAR"},{a:"ALL",b:"DAN"},
+    {a:"MST",b:"VFU",swing:1},{a:"REN",b:"OAK"},{a:"YAR",b:"SGI"},
+    {a:"LTR",b:"MON",swing:1},{a:"MAZ",b:"CAR"},{a:"ALL",b:"DAN"},
   ]},
   {r:16,d:"Sat 01 Aug",g:[
-    {a:"MON",b:"PHA"},{a:"OAK",b:"ALL",danger:1},{a:"CAR",b:"DAN"},
+    {a:"MON",b:"PHA",swing:1},{a:"OAK",b:"ALL"},{a:"CAR",b:"DAN"},
     {a:"PHA",b:"REN"},{a:"YAR",b:"LTR"},{a:"VFU",b:"DER",der:1},{a:"SGI",b:"MST"},
   ]},
   {r:17,d:"Sat 08 Aug",g:[
-    {a:"DER",b:"ALL",der:1},{a:"VFU",b:"YAR"},{a:"MON",b:"LTR"},
+    {a:"DER",b:"ALL",der:1},{a:"VFU",b:"YAR",swing:1},{a:"MON",b:"LTR",swing:1},
     {a:"SGI",b:"MAZ"},{a:"DAN",b:"OAK"},{a:"MST",b:"REN"},
   ]},
 ];
@@ -295,16 +275,18 @@ const winner = g => g.w==="a"?g.a:g.b;
 const loser  = g => g.w==="a"?g.b:g.a;
 
 function toForm(){ ALLG.forEach(g=>{ g.w = T[g.a].rk < T[g.b].rk ? "a":"b"; }); }
-function derWinsAll(){ ALLG.filter(g=>g.der).forEach(g=>{ g.w = g.a==="DER"?"a":"b"; }); }
+function derWins(){ set("VFU","DER","DER"); set("DER","ALL","DER"); }
 function set(aId,bId,winId){ const g=ALLG.find(x=>x.a===aId&&x.b===bId); if(g) g.w = winId===aId?"a":"b"; }
 
 const PRESETS = {
-  A:{fn:()=>{toForm();derWinsAll();}, note:"Win all four; every other match goes to the higher seed → 4th."},
-  B:{fn:()=>{toForm();derWinsAll();set("LTR","MON","LTR");}, note:"As A, plus La Trobe beat Monash → clear 3rd. Recommended."},
-  C:{fn:()=>{toForm();derWinsAll();set("LTR","MON","LTR");set("VFU","ALL","VFU");set("OAK","ALL","ALL");set("REN","OAK","REN");set("DAN","OAK","DAN");}, note:"Rivals stumble across the board → as high as 2nd."},
-  seed:{fn:()=>{toForm();}, note:"If Derrimut lose to Volley Friends & Alliance as underdogs → they miss out."},
+  A:{fn:()=>{toForm();derWins();}, note:"Win both remaining, everything else to seeding — but 49 only TIES Volley Friends & Monash, who both edge Derrimut on set ratio. Not enough on its own."},
+  B:{fn:()=>{toForm();derWins();set("LTR","MON","LTR");set("VFU","YAR","YAR");},
+     note:"Win both, AND Monash drop a game (La Trobe, R15) AND Volley Friends drop a game (Yarra, R17) → 4th and in. Recommended target. (Careful: if Storm beat Volley Friends instead, Storm itself climbs to 49 and pips Derrimut — so it needs to be Yarra.)"},
+  C:{fn:()=>{toForm();derWins();set("LTR","MON","LTR");set("VFU","YAR","YAR");set("ALL","DAN","DAN");set("OAK","ALL","OAK");},
+     note:"As B, plus Alliance stumble (lose to Dandenong & Oakleigh) → Derrimut climb to 3rd."},
+  seed:{fn:()=>{toForm();}, note:"Straight to seeding: Derrimut beat Volley Friends but lose to Alliance → 46 and outside the four."},
 };
-let current="A";
+let current="B";
 
 const SVG_CHECK='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.2L6.6 12l1.4-1.4 2.8 2.8 5.2-5.2L17.4 9.6z"/></svg>';
 const SVG_CROSS='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.6 12.2L14.2 15.6 12 13.4l-2.2 2.2-1.4-1.4L10.6 12 8.4 9.8l1.4-1.4L12 10.6l2.2-2.2 1.4 1.4L13.4 12z"/></svg>';
@@ -339,10 +321,12 @@ function render(){
   let detail;
   if(inTop4){
     detail="Derrimut finish "+pos+ordSuffix(pos)+" on "+der.p+" points, inside the four.";
-    if(better.length) detail+=" Level on points with "+better.map(t=>short(t.id)).join(" & ")+", but the Set % tiebreak still leaves them safe.";
+    if(better.length) detail+=" Level on points with "+better.map(t=>short(t.id)).join(" & ")+", but the Set % tiebreak leaves them safe.";
     else if(tied.length) detail+=" They win the Set % tiebreak over "+tied.map(t=>short(t.id)).join(" & ")+".";
   } else {
-    detail="Derrimut land "+pos+ordSuffix(pos)+" — outside the four. Ahead of them: "+arr.slice(0,4).map(t=>short(t.id)).join(", ")+".";
+    detail="Derrimut land "+pos+ordSuffix(pos)+" — outside the four.";
+    if(tied.length) detail+=" Level on "+der.p+" with "+tied.map(t=>short(t.id)).join(" & ")+", but Derrimut's weaker set ratio loses the tiebreak.";
+    else detail+=" Ahead of them: "+arr.slice(0,4).map(t=>short(t.id)).join(", ")+".";
   }
   document.getElementById("vDetail").textContent=detail;
 
@@ -373,27 +357,27 @@ function render(){
     rd.g.forEach(g=>{
       const w=document.createElement("div"); w.className="gwrap";
       const btn=document.createElement("button");
-      btn.type="button"; btn.className="game"+(g.der?" der":"")+(g.danger?" danger":"");
+      btn.type="button"; btn.className="game"+(g.der?" der":"")+(g.swing?" swing":"");
       const aw=g.w==="a", bw=g.w==="b";
       btn.setAttribute("aria-label","Toggle winner: "+short(g.a)+" versus "+short(g.b));
       btn.innerHTML="<span class='side a "+(aw?"won":"")+"'><span class='dot'></span>"+short(g.a)+"</span>"+
         "<span class='vs'>VS</span><span class='side b "+(bw?"won":"")+"'>"+short(g.b)+"<span class='dot'></span></span>";
       btn.addEventListener("click",()=>{g.w=g.w==="a"?"b":"a";current="";sync();render();});
       w.appendChild(btn);
-      if(g.der||g.danger){const f=document.createElement("div");f.className="tags";
-        f.innerHTML=(g.der?"<span class='tag must'>MUST-WIN</span>":"")+(g.danger?"<span class='tag danger'>WATCH</span>":"");w.appendChild(f);}
+      if(g.der||g.swing){const f=document.createElement("div");f.className="tags";
+        f.innerHTML=(g.der?"<span class='tag must'>MUST-WIN</span>":"")+(g.swing?"<span class='tag swing'>SWING</span>":"");w.appendChild(f);}
       gh.appendChild(w);
     });
     box.appendChild(gh); fx.appendChild(box);
   });
 
   document.getElementById("presetNote").textContent = current ? PRESETS[current].note : "Custom — you're editing results by hand.";
-  document.getElementById("foot").innerHTML="<b>How to read it.</b> Carrum are locked at 1st and Oakleigh all but certain at 2nd, so Derrimut's real fight is for 3rd and 4th with Alliance Gold, Volley Friends, Melbourne Storm and Monash Grey. Derrimut play Alliance and Volley Friends directly — beating them drags two rivals down at once. The one threat they can't touch is <b>Monash Grey</b>, who face only weak teams; the safest path is for someone to trip them up (scenario B).";
+  document.getElementById("foot").innerHTML="<b>Where it stands.</b> Derrimut sit 4th after Round 14, but it's tighter than the table looks. Carrum are gone (1st); Alliance and Oakleigh (both 43) will almost certainly take two of the next three spots. Derrimut's ceiling is <b>49</b> — and winning their last two isn't enough on its own, because 49 only ties Volley Friends and Monash, both of whom beat Derrimut on set ratio. <b>So Derrimut need to win both AND have Volley Friends and Monash each drop a game</b> — Volley Friends losing to Yarra in R17 (if Storm beat them instead, Storm climbs to 49 in their place), and La Trobe or Phantoms tripping Monash. Winning in straight sets also lifts Derrimut's set ratio for any tie that remains.";
 }
 function sync(){document.querySelectorAll(".seg-btn").forEach(b=>b.classList.toggle("on",b.dataset.preset===current));}
 document.querySelectorAll(".seg-btn").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.preset;PRESETS[current].fn();sync();render();}));
 
-PRESETS.A.fn(); current="A"; sync(); render();
+PRESETS.B.fn(); current="B"; sync(); render();
 </script>
 </body>
 </html>
