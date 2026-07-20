@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B57D0">
+<title>Derrimut Knights Black — Road to Top 4</title>
+<style>
+  /* ===== Material Design 3 tokens (light, blue seed) ===== */
+  :root{
+    --primary:#0B57D0; --on-primary:#FFFFFF;
+    --primary-container:#D3E3FD; --on-primary-container:#001B3E;
+    --secondary:#565F71; --secondary-container:#DAE2F9; --on-secondary-container:#131C2B;
+    --surface:#FAF9FD;
+    --sc-lowest:#FFFFFF; --sc-low:#F4F3F7; --sc:#EEEDF1; --sc-high:#E8E7EC;
+    --on-surface:#1A1C1E; --on-surface-variant:#43474E;
+    --outline:#73777F; --outline-variant:#C6C7CF;
+    --error:#BA1A1A; --error-container:#FFDAD6; --on-error-container:#410002;
+    --success:#146C2E; --success-container:#C6F0C2; --on-success-container:#052110;
+    --warn:#7A5900; --warn-container:#FFDF9E; --on-warn-container:#261900;
+    --e1:0 1px 2px rgba(0,0,0,.30),0 1px 3px 1px rgba(0,0,0,.15);
+    --e2:0 1px 2px rgba(0,0,0,.30),0 2px 6px 2px rgba(0,0,0,.15);
+    --e3:0 4px 8px 3px rgba(0,0,0,.15),0 1px 3px rgba(0,0,0,.30);
+    --r-xs:8px; --r-sm:12px; --r-md:16px; --r-xl:28px; --pill:999px;
+    --font:Roboto,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--surface);color:var(--on-surface);font-family:var(--font);
+    font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
+
+  .display{font-size:36px;font-weight:500;line-height:1.1;margin:0}
+  .headline{font-size:22px;font-weight:500;line-height:1.25;margin:0}
+  .body-sm{font-size:13px;font-weight:400;margin:0}
+  .overline{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase}
+  .variant{color:var(--on-surface-variant)}
+
+  .appbar{position:sticky;top:0;z-index:5;background:var(--sc-low);border-bottom:1px solid var(--outline-variant)}
+  .appbar .inner{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
+  .avatar{width:44px;height:44px;flex:none;border-radius:var(--pill);background:var(--primary);color:var(--on-primary);
+    display:flex;align-items:center;justify-content:center}
+  .avatar svg{width:26px;height:26px;fill:currentColor}
+  .appbar .ttl{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .appbar .ttl .k{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--primary)}
+  .appbar .ttl .n{font-size:18px;font-weight:600;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  .page{max-width:1080px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:20px}
+  .card{background:var(--sc-lowest);border-radius:var(--r-md);box-shadow:var(--e1)}
+  .card.pad{padding:20px}
+
+  .verdict{border-radius:var(--r-xl);padding:22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+    box-shadow:var(--e2);transition:background .3s,color .3s}
+  .verdict.in{background:var(--success-container);color:var(--on-success-container)}
+  .verdict.out{background:var(--error-container);color:var(--on-error-container)}
+  .postile{flex:none;width:132px;min-height:120px;border-radius:var(--r-md);background:var(--sc-lowest);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--e1)}
+  .postile .num{font-size:56px;font-weight:500;line-height:1}
+  .postile .num small{font-size:20px;font-weight:500;vertical-align:super}
+  .verdict.in .postile .num{color:var(--success)} .verdict.out .postile .num{color:var(--error)}
+  .postile .cap{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--on-surface-variant);margin-top:6px}
+  .vbody{flex:1;min-width:220px;display:flex;flex-direction:column;gap:8px}
+  .vstatus{display:inline-flex;align-items:center;gap:9px;font-size:22px;font-weight:600}
+  .vstatus svg{width:26px;height:26px;fill:currentColor;flex:none}
+  .vpts{font-size:15px}.vpts b{font-weight:700}
+  .vdetail{font-size:13px;opacity:.9}
+  .banked{font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;opacity:.85}
+  .banked svg{width:15px;height:15px;fill:currentColor}
+
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .chip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-xs);
+    background:var(--sc-lowest);border:1px solid var(--outline-variant);min-height:44px}
+  .chip .cn{display:flex;flex-direction:column;line-height:1.15}
+  .chip .cn .r{font-size:10px;font-weight:600;color:var(--on-surface-variant)}
+  .chip .cn .o{font-size:13px;font-weight:600;color:var(--on-surface)}
+  .chip svg{width:18px;height:18px;flex:none}
+  .chip.win{background:var(--success-container);border-color:transparent}
+  .chip.win svg{fill:var(--success)} .chip.win .cn .o{color:var(--on-success-container)}
+  .chip.loss{background:var(--error-container);border-color:transparent}
+  .chip.loss svg{fill:var(--error)} .chip.loss .cn .o{color:var(--on-error-container)}
+
+  .field-label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--on-surface-variant);margin-bottom:8px}
+  .segmented{display:inline-flex;flex-wrap:wrap;border-radius:var(--pill);overflow:hidden;border:1px solid var(--outline)}
+  .seg-btn{position:relative;border:0;border-left:1px solid var(--outline);background:transparent;color:var(--on-surface);
+    font-family:var(--font);font-size:13px;font-weight:600;padding:10px 18px;min-height:44px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px}
+  .seg-btn:first-child{border-left:0}
+  .seg-btn::before{content:"";position:absolute;inset:0;background:currentColor;opacity:0;transition:opacity .12s}
+  .seg-btn:hover::before{opacity:.08} .seg-btn:active::before{opacity:.12}
+  .seg-btn.on{background:var(--secondary-container);color:var(--on-secondary-container)}
+  .seg-btn.on.cau{background:var(--error-container);color:var(--on-error-container)}
+  .seg-btn .ck{width:16px;height:16px;fill:currentColor;display:none} .seg-btn.on .ck{display:inline}
+  .note{margin-top:10px}
+
+  .sh{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px}
+
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{width:100%;border-collapse:collapse;min-width:340px}
+  thead th{font-size:11px;font-weight:600;color:var(--on-surface-variant);text-transform:uppercase;letter-spacing:.04em;
+    text-align:right;padding:0 10px 12px;white-space:nowrap;border-bottom:1px solid var(--outline-variant)}
+  thead th.l{text-align:left}
+  tbody td{padding:11px 10px;font-size:14px;text-align:right;border-bottom:1px solid var(--outline-variant);white-space:nowrap}
+  tbody td.l{text-align:left}
+  tbody tr:last-child td{border-bottom:0}
+  .pos{color:var(--on-surface-variant);font-weight:600;width:20px}
+  .tname{font-weight:500}
+  .pts{font-weight:700}
+  tr.der td{background:var(--primary-container)}
+  tr.der .tname,tr.der .pos,tr.der .pts{color:var(--on-primary-container)}
+  tr.cut td{border-bottom:3px solid var(--primary)}
+  .cutrow td{padding:6px 10px;border:0}
+  .cutrow span{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--primary)}
+  .qb{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:2px 8px;border-radius:var(--pill);
+    background:var(--success-container);color:var(--on-success-container);margin-left:7px;vertical-align:middle}
+
+  .round + .round{margin-top:18px}
+  .round-h{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:10px;margin-bottom:10px;
+    border-bottom:1px solid var(--outline-variant)}
+  .round-h .rl{font-size:13px;font-weight:600}
+  .round-h .rd{font-size:11px;font-weight:600;color:var(--on-surface-variant)}
+  .games{display:flex;flex-direction:column;gap:10px}
+  .gwrap{display:flex;flex-direction:column;gap:6px}
+  .game{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;width:100%;padding:0;
+    background:var(--sc-low);border:1px solid var(--outline-variant);border-radius:var(--r-sm);overflow:hidden;
+    cursor:pointer;font-family:var(--font);text-align:left;min-height:52px}
+  .game::before{content:"";position:absolute;inset:0;background:var(--on-surface);opacity:0;transition:opacity .12s;pointer-events:none}
+  .game:hover::before{opacity:.05} .game:active::before{opacity:.10}
+  .side{display:flex;align-items:center;gap:8px;padding:11px 14px;font-size:14px;color:var(--on-surface-variant)}
+  .side.b{justify-content:flex-end;text-align:right}
+  .side .dot{width:8px;height:8px;border-radius:var(--pill);background:var(--outline-variant);flex:none}
+  .side.won{color:var(--on-primary-container);font-weight:600;background:var(--primary-container)}
+  .side.won .dot{background:var(--primary)}
+  .vs{display:flex;align-items:center;justify-content:center;padding:0 12px;font-size:10px;font-weight:700;
+    color:var(--on-surface-variant);background:var(--sc)}
+  .game.der .vs{color:var(--on-primary-container);background:var(--primary-container)}
+  .game.swing .vs{color:var(--on-warn-container);background:var(--warn-container)}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;padding-left:2px}
+  .tag{display:inline-flex;align-items:center;font-size:10px;font-weight:700;padding:3px 9px;border-radius:var(--pill);letter-spacing:.03em}
+  .tag.must{background:var(--primary-container);color:var(--on-primary-container)}
+  .tag.swing{background:var(--warn-container);color:var(--on-warn-container)}
+
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--on-surface-variant)}
+  .legend .sw{display:inline-flex;align-items:center;gap:7px}
+  .legend .box6{width:12px;height:12px;border-radius:4px;display:inline-block}
+
+  .grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:20px}
+  footer{color:var(--on-surface-variant);font-size:13px;line-height:1.7;padding:4px 2px 8px}
+  footer b{color:var(--on-surface);font-weight:600}
+
+  @media(max-width:840px){ .grid2{grid-template-columns:1fr} }
+  @media(max-width:560px){
+    .page{padding:16px;gap:16px}
+    .card.pad{padding:16px}
+    .verdict{padding:18px;gap:16px}
+    .postile{width:100%;min-height:96px;flex-direction:row;gap:14px;justify-content:center}
+    .postile .cap{margin-top:0}
+    .display{font-size:32px}
+    .vstatus{font-size:19px}
+    .segmented{width:100%}
+    .seg-btn{flex:1 1 auto;justify-content:center;padding:11px 12px}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  button:focus-visible,.game:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+</style>
+</head>
+<body>
+  <div class="appbar">
+    <div class="inner">
+      <span class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.9 9h-4.02a15.8 15.8 0 0 0-2.02-6.9A8.02 8.02 0 0 1 19.9 11ZM12 4.1c1.2 1.8 1.97 4.3 2.14 6.9H9.86C10.03 8.4 10.8 5.9 12 4.1ZM4.1 13h4.02c.2 2.62.98 5.05 2.02 6.9A8.02 8.02 0 0 1 4.1 13Zm0-2a8.02 8.02 0 0 1 6.04-6.9A15.8 15.8 0 0 0 8.12 11H4.1Zm9.76 8.9c1.04-1.85 1.82-4.28 2.02-6.9h4.02a8.02 8.02 0 0 1-6.04 6.9Z"/></svg>
+      </span>
+      <div class="ttl">
+        <span class="k">VVL 2026 · SL1M · Pool B · After Round 14</span>
+        <span class="n">Derrimut Knights Black — Road to Top 4</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <section class="verdict in" id="verdict" aria-live="polite">
+      <div class="postile">
+        <div class="num" id="vPos">4<small>th</small></div>
+        <div class="cap">Projected</div>
+      </div>
+      <div class="vbody">
+        <div class="vstatus" id="vStatus"></div>
+        <div class="vpts">Finishing on <b id="vPts">49</b> points.</div>
+        <p class="vdetail" id="vDetail"></p>
+        <span class="banked"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Round 14 done — beat Phantoms twice. 2 games left:</span>
+        <div class="chips" id="chips"></div>
+      </div>
+    </section>
+
+    <div>
+      <span class="field-label">Scenario</span>
+      <div class="segmented" role="group" aria-label="Scenario presets">
+        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both, to form</button>
+        <button class="seg-btn" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both + the help</button>
+        <button class="seg-btn" data-preset="C"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Dream run</button>
+        <button class="seg-btn cau" data-preset="seed"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Play to seed</button>
+      </div>
+      <p class="note body-sm variant" id="presetNote"></p>
+    </div>
+
+    <div class="grid2">
+      <section class="card pad">
+        <div class="sh">
+          <h2 class="headline">Live Pool B ladder</h2>
+          <span class="overline variant">projected final</span>
+        </div>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th class="l">#</th><th class="l">Team</th><th>Pld</th><th>Pts</th><th>Set&nbsp;%</th></tr></thead>
+            <tbody id="ladder"></tbody>
+          </table>
+        </div>
+        <div class="legend">
+          <span class="sw"><span class="box6" style="background:var(--success)"></span> qualifies (top 4)</span>
+          <span class="sw"><span class="box6" style="background:var(--primary)"></span> Derrimut</span>
+          <span>ties broken on Set&nbsp;% (assumes 3–1 scorelines)</span>
+        </div>
+      </section>
+
+      <section class="card pad">
+        <div class="sh">
+          <h2 class="headline">Remaining fixtures</h2>
+          <span class="overline variant">tap to set winner</span>
+        </div>
+        <div id="fixtures"></div>
+        <div class="legend">
+          <span class="sw"><span class="tag must">MUST-WIN</span> Derrimut's games</span>
+          <span class="sw"><span class="tag swing">SWING</span> Volley Friends / Monash must drop one here</span>
+        </div>
+      </section>
+    </div>
+
+    <footer id="foot"></footer>
+  </div>
+
+<script>
+// ---- base AFTER Round 14 (authoritative, Volleyball Victoria) ----
+const T = {
+  CAR:{n:"Carrum Downs Royals",p:56,sw:42,sl:6, pl:14,rk:1},
+  ALL:{n:"Alliance Gold",      p:43,sw:35,sl:11,pl:13,rk:2},
+  OAK:{n:"Oakleigh",           p:43,sw:34,sl:18,pl:13,rk:3},
+  DER:{n:"Derrimut Knights Black",p:41,sw:29,sl:27,pl:14,rk:4},
+  VFU:{n:"Volley Friends Utd", p:40,sw:33,sl:21,pl:13,rk:5},
+  DAN:{n:"Dandenong White",    p:37,sw:31,sl:20,pl:13,rk:6},
+  MON:{n:"Monash Uni Grey",    p:37,sw:30,sl:21,pl:13,rk:7},
+  MST:{n:"Melbourne Storm",    p:37,sw:31,sl:24,pl:13,rk:8},
+  REN:{n:"Melb Uni Renegades", p:31,sw:23,sl:24,pl:13,rk:9},
+  PHA:{n:"Phantoms",           p:29,sw:23,sl:27,pl:14,rk:10},
+  SGI:{n:"South Gippsland",    p:22,sw:12,sl:35,pl:13,rk:11},
+  MAZ:{n:"Mazenod",            p:15,sw:15,sl:36,pl:14,rk:12},
+  LTR:{n:"La Trobe Uni Red",   p:13,sw:6, sl:39,pl:13,rk:13},
+  YAR:{n:"Yarra Ranges",       p:13,sw:4, sl:39,pl:13,rk:14},
+};
+const R = [
+  {r:15,d:"Sat 25 Jul",g:[
+    {a:"MST",b:"VFU",swing:1},{a:"REN",b:"OAK"},{a:"YAR",b:"SGI"},
+    {a:"LTR",b:"MON",swing:1},{a:"MAZ",b:"CAR"},{a:"ALL",b:"DAN"},
+  ]},
+  {r:16,d:"Sat 01 Aug",g:[
+    {a:"MON",b:"PHA",swing:1},{a:"OAK",b:"ALL"},{a:"CAR",b:"DAN"},
+    {a:"PHA",b:"REN"},{a:"YAR",b:"LTR"},{a:"VFU",b:"DER",der:1},{a:"SGI",b:"MST"},
+  ]},
+  {r:17,d:"Sat 08 Aug",g:[
+    {a:"DER",b:"ALL",der:1},{a:"VFU",b:"YAR",swing:1},{a:"MON",b:"LTR",swing:1},
+    {a:"SGI",b:"MAZ"},{a:"DAN",b:"OAK"},{a:"MST",b:"REN"},
+  ]},
+];
+const ALLG = R.flatMap(rd=>rd.g);
+const winner = g => g.w==="a"?g.a:g.b;
+const loser  = g => g.w==="a"?g.b:g.a;
+
+function toForm(){ ALLG.forEach(g=>{ g.w = T[g.a].rk < T[g.b].rk ? "a":"b"; }); }
+function derWins(){ set("VFU","DER","DER"); set("DER","ALL","DER"); }
+function set(aId,bId,winId){ const g=ALLG.find(x=>x.a===aId&&x.b===bId); if(g) g.w = winId===aId?"a":"b"; }
+
+const PRESETS = {
+  A:{fn:()=>{toForm();derWins();}, note:"Win both remaining, everything else to seeding — but 49 only TIES Volley Friends & Monash, who both edge Derrimut on set ratio. Not enough on its own."},
+  B:{fn:()=>{toForm();derWins();set("LTR","MON","LTR");set("VFU","YAR","YAR");},
+     note:"Win both, AND Monash drop a game (La Trobe, R15) AND Volley Friends drop a game (Yarra, R17) → 4th and in. Recommended target. (Careful: if Storm beat Volley Friends instead, Storm itself climbs to 49 and pips Derrimut — so it needs to be Yarra.)"},
+  C:{fn:()=>{toForm();derWins();set("LTR","MON","LTR");set("VFU","YAR","YAR");set("ALL","DAN","DAN");set("OAK","ALL","OAK");},
+     note:"As B, plus Alliance stumble (lose to Dandenong & Oakleigh) → Derrimut climb to 3rd."},
+  seed:{fn:()=>{toForm();}, note:"Straight to seeding: Derrimut beat Volley Friends but lose to Alliance → 46 and outside the four."},
+};
+let current="B";
+
+const SVG_CHECK='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.2L6.6 12l1.4-1.4 2.8 2.8 5.2-5.2L17.4 9.6z"/></svg>';
+const SVG_CROSS='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.6 12.2L14.2 15.6 12 13.4l-2.2 2.2-1.4-1.4L10.6 12 8.4 9.8l1.4-1.4L12 10.6l2.2-2.2 1.4 1.4L13.4 12z"/></svg>';
+const SVG_CHK_SM='<svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
+const SVG_X_SM='<svg viewBox="0 0 24 24"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg>';
+
+function compute(){
+  const s={}; for(const k in T){const t=T[k];s[k]={id:k,p:t.p,sw:t.sw,sl:t.sl,pl:t.pl};}
+  ALLG.forEach(g=>{const w=winner(g),l=loser(g);
+    s[w].p+=4;s[w].sw+=3;s[w].sl+=1;s[w].pl+=1;
+    s[l].p+=1;s[l].sw+=1;s[l].sl+=3;s[l].pl+=1;});
+  const arr=Object.keys(s).map(k=>({id:k,...s[k],pct:s[k].sw/(s[k].sw+s[k].sl)}));
+  arr.sort((a,b)=> b.p-a.p || b.pct-a.pct);
+  return arr;
+}
+const ORD=["th","st","nd","rd"];
+const ordSuffix=n=>{const v=n%100;return ORD[(v-20)%10]||ORD[v]||ORD[0];};
+function short(id){return T[id].n.replace("Volley Friends Utd","Volley Friends").replace("Melb Uni Renegades","Renegades").replace("Derrimut Knights Black","Derrimut Knights");}
+
+function render(){
+  const arr=compute();
+  const idx=arr.findIndex(t=>t.id==="DER"), der=arr[idx], pos=idx+1, inTop4=pos<=4;
+
+  const v=document.getElementById("verdict");
+  v.className="verdict "+(inTop4?"in":"out");
+  document.getElementById("vStatus").innerHTML=(inTop4?SVG_CHECK+" In the top 4":SVG_CROSS+" Missing out");
+  document.getElementById("vPos").innerHTML=pos+"<small>"+ordSuffix(pos)+"</small>";
+  document.getElementById("vPts").textContent=der.p;
+
+  const tied=arr.filter(t=>t.p===der.p&&t.id!=="DER");
+  const better=tied.filter(t=>t.pct>der.pct);
+  let detail;
+  if(inTop4){
+    detail="Derrimut finish "+pos+ordSuffix(pos)+" on "+der.p+" points, inside the four.";
+    if(better.length) detail+=" Level on points with "+better.map(t=>short(t.id)).join(" & ")+", but the Set % tiebreak leaves them safe.";
+    else if(tied.length) detail+=" They win the Set % tiebreak over "+tied.map(t=>short(t.id)).join(" & ")+".";
+  } else {
+    detail="Derrimut land "+pos+ordSuffix(pos)+" — outside the four.";
+    if(tied.length) detail+=" Level on "+der.p+" with "+tied.map(t=>short(t.id)).join(" & ")+", but Derrimut's weaker set ratio loses the tiebreak.";
+    else detail+=" Ahead of them: "+arr.slice(0,4).map(t=>short(t.id)).join(", ")+".";
+  }
+  document.getElementById("vDetail").textContent=detail;
+
+  const ch=document.getElementById("chips"); ch.innerHTML="";
+  R.forEach(rd=>rd.g.forEach(g=>{ if(!g.der) return;
+    const opp=g.a==="DER"?g.b:g.a, won=winner(g)==="DER";
+    const c=document.createElement("div"); c.className="chip "+(won?"win":"loss");
+    c.innerHTML=(won?SVG_CHK_SM:SVG_X_SM)+"<span class='cn'><span class='r'>R"+rd.r+"</span><span class='o'>v "+short(opp)+"</span></span>";
+    ch.appendChild(c);
+  }));
+
+  const tb=document.getElementById("ladder"); tb.innerHTML="";
+  arr.forEach((t,i)=>{
+    const tr=document.createElement("tr");
+    tr.className=(t.id==="DER"?"der ":"")+(i===3?"cut":"");
+    tr.innerHTML="<td class='l pos'>"+(i+1)+"</td><td class='l tname'>"+short(t.id)+(i<4?"<span class='qb'>Q</span>":"")+
+      "</td><td>"+t.pl+"</td><td class='pts'>"+t.p+"</td><td>"+(t.pct*100).toFixed(1)+"</td>";
+    tb.appendChild(tr);
+    if(i===3){const cr=document.createElement("tr");cr.className="cutrow";
+      cr.innerHTML="<td colspan='5'><span>finals cut-line</span></td>";tb.appendChild(cr);}
+  });
+
+  const fx=document.getElementById("fixtures"); fx.innerHTML="";
+  R.forEach(rd=>{
+    const box=document.createElement("div"); box.className="round";
+    box.innerHTML="<div class='round-h'><span class='rl'>Round "+rd.r+(rd.r===15?" · Derrimut bye":"")+"</span><span class='rd'>"+rd.d+"</span></div>";
+    const gh=document.createElement("div"); gh.className="games";
+    rd.g.forEach(g=>{
+      const w=document.createElement("div"); w.className="gwrap";
+      const btn=document.createElement("button");
+      btn.type="button"; btn.className="game"+(g.der?" der":"")+(g.swing?" swing":"");
+      const aw=g.w==="a", bw=g.w==="b";
+      btn.setAttribute("aria-label","Toggle winner: "+short(g.a)+" versus "+short(g.b));
+      btn.innerHTML="<span class='side a "+(aw?"won":"")+"'><span class='dot'></span>"+short(g.a)+"</span>"+
+        "<span class='vs'>VS</span><span class='side b "+(bw?"won":"")+"'>"+short(g.b)+"<span class='dot'></span></span>";
+      btn.addEventListener("click",()=>{g.w=g.w==="a"?"b":"a";current="";sync();render();});
+      w.appendChild(btn);
+      if(g.der||g.swing){const f=document.createElement("div");f.className="tags";
+        f.innerHTML=(g.der?"<span class='tag must'>MUST-WIN</span>":"")+(g.swing?"<span class='tag swing'>SWING</span>":"");w.appendChild(f);}
+      gh.appendChild(w);
+    });
+    box.appendChild(gh); fx.appendChild(box);
+  });
+
+  document.getElementById("presetNote").textContent = current ? PRESETS[current].note : "Custom — you're editing results by hand.";
+  document.getElementById("foot").innerHTML="<b>Where it stands.</b> Derrimut sit 4th after Round 14, but it's tighter than the table looks. Carrum are gone (1st); Alliance and Oakleigh (both 43) will almost certainly take two of the next three spots. Derrimut's ceiling is <b>49</b> — and winning their last two isn't enough on its own, because 49 only ties Volley Friends and Monash, both of whom beat Derrimut on set ratio. <b>So Derrimut need to win both AND have Volley Friends and Monash each drop a game</b> — Volley Friends losing to Yarra in R17 (if Storm beat them instead, Storm climbs to 49 in their place), and La Trobe or Phantoms tripping Monash. Winning in straight sets also lifts Derrimut's set ratio for any tie that remains.";
+}
+function sync(){document.querySelectorAll(".seg-btn").forEach(b=>b.classList.toggle("on",b.dataset.preset===current));}
+document.querySelectorAll(".seg-btn").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.preset;PRESETS[current].fn();sync();render();}));
+
+PRESETS.B.fn(); current="B"; sync(); render();
+</script>
+</body>
+</html>
