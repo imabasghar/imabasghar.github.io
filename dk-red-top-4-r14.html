@@ -168,7 +168,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.9 9h-4.02a15.8 15.8 0 0 0-2.02-6.9A8.02 8.02 0 0 1 19.9 11ZM12 4.1c1.2 1.8 1.97 4.3 2.14 6.9H9.86C10.03 8.4 10.8 5.9 12 4.1ZM4.1 13h4.02c.2 2.62.98 5.05 2.02 6.9A8.02 8.02 0 0 1 4.1 13Zm0-2a8.02 8.02 0 0 1 6.04-6.9A15.8 15.8 0 0 0 8.12 11H4.1Zm9.76 8.9c1.04-1.85 1.82-4.28 2.02-6.9h4.02a8.02 8.02 0 0 1-6.04 6.9Z"/></svg>
       </span>
       <div class="ttl">
-        <span class="k">VVL 2026 · SL1M · Pool A · After Round 15</span>
+        <span class="k">VVL 2026 · SL1M · Pool A · After Round 14</span>
         <span class="n">Derrimut Knights Red — Road to Top 4</span>
       </div>
     </div>
@@ -185,7 +185,7 @@
         <div class="vstatus" id="vStatus"></div>
         <div class="vpts">Finishing on <b id="vPts">49</b> points.</div>
         <p class="vdetail" id="vDetail"></p>
-        <span class="gamesleft">2 games to play:</span>
+        <span class="gamesleft">3 games to play:</span>
         <div class="chips" id="chips"></div>
       </div>
     </section>
@@ -193,9 +193,9 @@
     <div>
       <span class="field-label">Scenario</span>
       <div class="segmented" role="group" aria-label="Scenario presets">
-        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both</button>
+        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win 2 of 3</button>
         <button class="seg-btn" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Eastside + Alliance slip</button>
-        <button class="seg-btn" data-preset="C"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both + insurance</button>
+        <button class="seg-btn" data-preset="C"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Sweep the run</button>
         <button class="seg-btn cau" data-preset="seed"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Play to seed</button>
       </div>
       <p class="note body-sm variant" id="presetNote"></p>
@@ -237,24 +237,28 @@
   </div>
 
 <script>
-// ---- base AFTER Round 15 (Pool A, Volleyball Victoria) ----
+// ---- base AFTER Round 14 (Pool A, Volleyball Victoria) ----
 const T = {
-  VR1:{n:"VR1 Volley",          p:53,sw:41,sl:8, pl:14,rk:1},
-  STR:{n:"Strive",              p:53,sw:39,sl:9, pl:14,rk:2},
+  VR1:{n:"VR1 Volley",          p:49,sw:38,sl:8, pl:13,rk:1},
+  STR:{n:"Strive",              p:49,sw:36,sl:8, pl:13,rk:2},
   DNR:{n:"Dandenong Red",       p:47,sw:37,sl:15,pl:14,rk:3},
-  ALB:{n:"Alliance Black",      p:44,sw:35,sl:18,pl:14,rk:4},
-  DKR:{n:"Derrimut Knights Red",p:41,sw:34,sl:17,pl:14,rk:5},
-  MUB:{n:"Monash Uni Blue",     p:41,sw:29,sl:22,pl:14,rk:6},
-  KVA:{n:"KVA Future Stars",    p:37,sw:29,sl:23,pl:14,rk:7},
-  LTB:{n:"La Trobe Uni Black",  p:32,sw:21,sl:32,pl:14,rk:8},
-  EAS:{n:"Eastside Hawks",      p:29,sw:21,sl:32,pl:14,rk:9},
-  HEI:{n:"Heidelberg",          p:27,sw:21,sl:37,pl:15,rk:10},
-  HOR:{n:"Horsham Heat",        p:26,sw:18,sl:36,pl:14,rk:11},
-  RNW:{n:"Renegades White",     p:23,sw:18,sl:38,pl:14,rk:12},
-  MOR:{n:"Mornington",          p:20,sw:12,sl:39,pl:14,rk:13},
-  WRW:{n:"Western Region Wolves",p:14,sw:14,sl:43,pl:15,rk:14},
+  DKR:{n:"Derrimut Knights Red",p:40,sw:33,sl:14,pl:13,rk:4},
+  ALB:{n:"Alliance Black",      p:40,sw:32,sl:18,pl:13,rk:5},
+  MUB:{n:"Monash Uni Blue",     p:37,sw:26,sl:22,pl:13,rk:6},
+  KVA:{n:"KVA Future Stars",    p:33,sw:26,sl:23,pl:13,rk:7},
+  LTB:{n:"La Trobe Uni Black",  p:31,sw:21,sl:29,pl:13,rk:8},
+  HEI:{n:"Heidelberg",          p:26,sw:20,sl:34,pl:14,rk:9},
+  EAS:{n:"Eastside Hawks",      p:25,sw:18,sl:31,pl:13,rk:10},
+  RNW:{n:"Renegades White",     p:22,sw:18,sl:35,pl:13,rk:11},
+  HOR:{n:"Horsham Heat",        p:21,sw:15,sl:31,pl:12,rk:12},
+  MOR:{n:"Mornington",          p:19,sw:10,sl:36,pl:13,rk:13},
+  WRW:{n:"Western Region Wolves",p:13,sw:14,sl:40,pl:14,rk:14},
 };
 const R = [
+  {r:15,d:"Sat 25 Jul",g:[
+    {a:"STR",b:"DKR",der:1,tag:"UPSET"},{a:"KVA",b:"RNW"},{a:"HEI",b:"EAS"},
+    {a:"MUB",b:"LTB"},{a:"MOR",b:"HOR"},{a:"WRW",b:"ALB"},{a:"VR1",b:"HOR"},
+  ]},
   {r:16,d:"Sat 01 Aug",g:[
     {a:"MOR",b:"MUB"},{a:"EAS",b:"DKR",der:1,tag:"MUST-WIN"},{a:"LTB",b:"ALB",swing:1},
     {a:"VR1",b:"KVA"},{a:"RNW",b:"STR"},{a:"HEI",b:"DNR"},
@@ -271,19 +275,20 @@ const loser  = g => g.w==="a"?g.b:g.a;
 function toForm(){ ALLG.forEach(g=>{ g.w = T[g.a].rk < T[g.b].rk ? "a":"b"; }); }
 function set(aId,bId,winId){ const g=ALLG.find(x=>x.a===aId&&x.b===bId); if(g) g.w = winId===aId?"a":"b"; }
 const winEast=()=>set("EAS","DKR","DKR");
+const winStr =()=>set("STR","DKR","DKR");
 const winVR1 =()=>set("DKR","VR1","DKR");
 
 const PRESETS = {
-  A:{fn:()=>{toForm();winEast();winVR1();},
-     note:"Beat Eastside (as expected) AND upset VR1 in the last round — 49 points, edging Alliance Black on set ratio for 4th. No outside help needed, but VR1 top the pool, so this is the hard road."},
+  A:{fn:()=>{toForm();winEast();winStr();},
+     note:"Beat Eastside (as expected) AND upset one of the top two — here Strive (R15). That alone lifts Derrimut to 49 and 4th, edging Alliance Black on set ratio. No outside help needed."},
   B:{fn:()=>{toForm();winEast();set("LTB","ALB","LTB");},
-     note:"Can't topple VR1? Winning just Eastside leaves Derrimut on 46 — then Alliance Black must drop a game (La Trobe, R16). Derrimut's stronger set ratio wins the tie → 4th. The realistic path."},
-  C:{fn:()=>{toForm();winEast();winVR1();set("LTB","ALB","LTB");},
-     note:"Win both AND Alliance Black slip → Derrimut clear on 49 with Alliance back on 46. Comfortable 4th, no tiebreak needed."},
+     note:"Can't topple a leader? Winning just Eastside keeps Derrimut on 46 — then Alliance Black must drop one (La Trobe, R16). Derrimut's stronger set ratio wins the tie → 4th."},
+  C:{fn:()=>{toForm();winEast();winStr();winVR1();},
+     note:"Win all three, including both league leaders → 52 points and safely 4th (3rd if Dandenong Red slip)."},
   seed:{fn:()=>{toForm();},
-     note:"Straight to seeding: Derrimut beat Eastside but lose to VR1, and Alliance Black hold form → 5th, one spot short."},
+     note:"Straight to seeding: Derrimut beat Eastside but lose to Strive & VR1, and Alliance Black hold form → 5th, one spot short."},
 };
-let current="B";
+let current="A";
 
 const SVG_CHECK='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.2L6.6 12l1.4-1.4 2.8 2.8 5.2-5.2L17.4 9.6z"/></svg>';
 const SVG_CROSS='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.6 12.2L14.2 15.6 12 13.4l-2.2 2.2-1.4-1.4L10.6 12 8.4 9.8l1.4-1.4L12 10.6l2.2-2.2 1.4 1.4L13.4 12z"/></svg>';
@@ -369,12 +374,12 @@ function render(){
   });
 
   document.getElementById("presetNote").textContent = current ? PRESETS[current].note : "Custom — you're editing results by hand.";
-  document.getElementById("foot").innerHTML="<b>Where it stands.</b> A Round-15 loss to Strive dropped Derrimut Knights Red to 5th (41 pts), now three behind Alliance Black — but their set ratio (66.7%) is a real weapon in any tie. VR1 Volley and Strive (both 53) and Dandenong Red (47, who can't be caught) are locked in the top three, so the last finals spot is a straight shoot-out between <b>Derrimut Red and Alliance Black</b>, who never meet. Derrimut's run is the hard part — Eastside (winnable) then VR1 (top of the pool). The clean routes: <b>upset VR1</b> and it's 4th outright, or just <b>beat Eastside and hope Alliance Black drop one</b> (La Trobe R16, or Dandenong Red R17) — the tiebreak then falls Derrimut's way.";
+  document.getElementById("foot").innerHTML="<b>Where it stands.</b> Derrimut Knights Red sit 4th after Round 14 (40 pts), level with Alliance Black but ahead on set ratio (70% — a genuine asset here). VR1 Volley and Strive (both 49) are near-certain to take the top two, and Dandenong Red (47) the third — so the last finals spot is a straight shoot-out between <b>Derrimut Red and Alliance Black</b>, who never meet. Derrimut's run is the hard part: Strive (2nd) and VR1 (1st) are two of their three games. The upside — they only need to <b>win 2 of 3</b>: beat Eastside (R16) and steal one off a top side, and 4th is theirs. If they can only manage Eastside, they need <b>Alliance Black to drop a game</b> (La Trobe R16, or Dandenong Red R17) and the tiebreak does the rest.";
 }
 function sync(){document.querySelectorAll(".seg-btn").forEach(b=>b.classList.toggle("on",b.dataset.preset===current));}
 document.querySelectorAll(".seg-btn").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.preset;PRESETS[current].fn();sync();render();}));
 
-PRESETS.B.fn(); current="B"; sync(); render();
+PRESETS.A.fn(); current="A"; sync(); render();
 </script>
 </body>
 </html>
