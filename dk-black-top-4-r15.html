@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#C5221F">
-<title>Derrimut Knights Red — Road to Top 4</title>
+<meta name="theme-color" content="#0B57D0">
+<title>Derrimut Knights Black — Road to Top 4</title>
 <style>
-  /* ===== Material Design 3 tokens (light, RED seed) ===== */
+  /* ===== Material Design 3 tokens (light, blue seed) ===== */
   :root{
-    --primary:#C5221F; --on-primary:#FFFFFF;
-    --primary-container:#FFDAD5; --on-primary-container:#410001;
-    --secondary:#775652; --secondary-container:#FFE4E0; --on-secondary-container:#2C1512;
-    --surface:#FFF8F7;
-    --sc-lowest:#FFFFFF; --sc-low:#FCEFED; --sc:#F7E4E2; --sc-high:#F1D9D6;
-    --on-surface:#231918; --on-surface-variant:#534341;
-    --outline:#857370; --outline-variant:#D8C2BF;
+    --primary:#0B57D0; --on-primary:#FFFFFF;
+    --primary-container:#D3E3FD; --on-primary-container:#001B3E;
+    --secondary:#565F71; --secondary-container:#DAE2F9; --on-secondary-container:#131C2B;
+    --surface:#FAF9FD;
+    --sc-lowest:#FFFFFF; --sc-low:#F4F3F7; --sc:#EEEDF1; --sc-high:#E8E7EC;
+    --on-surface:#1A1C1E; --on-surface-variant:#43474E;
+    --outline:#73777F; --outline-variant:#C6C7CF;
+    --error:#BA1A1A; --error-container:#FFDAD6; --on-error-container:#410002;
     --success:#146C2E; --success-container:#C6F0C2; --on-success-container:#052110;
     --warn:#7A5900; --warn-container:#FFDF9E; --on-warn-container:#261900;
-    --neutral-bg:#E6E1E5; --on-neutral:#1C1B1F; --on-neutral-variant:#49454E;
     --e1:0 1px 2px rgba(0,0,0,.30),0 1px 3px 1px rgba(0,0,0,.15);
     --e2:0 1px 2px rgba(0,0,0,.30),0 2px 6px 2px rgba(0,0,0,.15);
     --r-xs:8px; --r-sm:12px; --r-md:16px; --r-xl:28px; --pill:999px;
@@ -50,19 +50,20 @@
   .verdict{border-radius:var(--r-xl);padding:22px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;
     box-shadow:var(--e2);transition:background .3s,color .3s}
   .verdict.in{background:var(--success-container);color:var(--on-success-container)}
-  .verdict.out{background:var(--neutral-bg);color:var(--on-neutral)}
+  .verdict.out{background:var(--error-container);color:var(--on-error-container)}
   .postile{flex:none;width:132px;min-height:120px;border-radius:var(--r-md);background:var(--sc-lowest);
     display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:var(--e1)}
   .postile .num{font-size:56px;font-weight:500;line-height:1}
   .postile .num small{font-size:20px;font-weight:500;vertical-align:super}
-  .verdict.in .postile .num{color:var(--success)} .verdict.out .postile .num{color:var(--primary)}
+  .verdict.in .postile .num{color:var(--success)} .verdict.out .postile .num{color:var(--error)}
   .postile .cap{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--on-surface-variant);margin-top:6px}
   .vbody{flex:1;min-width:220px;display:flex;flex-direction:column;gap:8px}
   .vstatus{display:inline-flex;align-items:center;gap:9px;font-size:22px;font-weight:600}
   .vstatus svg{width:26px;height:26px;fill:currentColor;flex:none}
   .vpts{font-size:15px}.vpts b{font-weight:700}
   .vdetail{font-size:13px;opacity:.9}
-  .gamesleft{font-size:12px;font-weight:600;opacity:.85}
+  .gamesleft{font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px;opacity:.85}
+  .gamesleft svg{width:15px;height:15px;fill:currentColor}
 
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
   .chip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--r-xs);
@@ -73,8 +74,8 @@
   .chip svg{width:18px;height:18px;flex:none}
   .chip.win{background:var(--success-container);border-color:transparent}
   .chip.win svg{fill:var(--success)} .chip.win .cn .o{color:var(--on-success-container)}
-  .chip.loss{background:var(--neutral-bg);border-color:transparent}
-  .chip.loss svg{fill:var(--primary)} .chip.loss .cn .o{color:var(--on-neutral)}
+  .chip.loss{background:var(--error-container);border-color:transparent}
+  .chip.loss svg{fill:var(--error)} .chip.loss .cn .o{color:var(--on-error-container)}
 
   .field-label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     color:var(--on-surface-variant);margin-bottom:8px}
@@ -85,8 +86,8 @@
   .seg-btn:first-child{border-left:0}
   .seg-btn::before{content:"";position:absolute;inset:0;background:currentColor;opacity:0;transition:opacity .12s}
   .seg-btn:hover::before{opacity:.08} .seg-btn:active::before{opacity:.12}
-  .seg-btn.on{background:var(--primary-container);color:var(--on-primary-container)}
-  .seg-btn.on.cau{background:var(--neutral-bg);color:var(--on-neutral)}
+  .seg-btn.on{background:var(--secondary-container);color:var(--on-secondary-container)}
+  .seg-btn.on.cau{background:var(--error-container);color:var(--on-error-container)}
   .seg-btn .ck{width:16px;height:16px;fill:currentColor;display:none} .seg-btn.on .ck{display:inline}
   .note{margin-top:10px}
 
@@ -168,8 +169,8 @@
         <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm7.9 9h-4.02a15.8 15.8 0 0 0-2.02-6.9A8.02 8.02 0 0 1 19.9 11ZM12 4.1c1.2 1.8 1.97 4.3 2.14 6.9H9.86C10.03 8.4 10.8 5.9 12 4.1ZM4.1 13h4.02c.2 2.62.98 5.05 2.02 6.9A8.02 8.02 0 0 1 4.1 13Zm0-2a8.02 8.02 0 0 1 6.04-6.9A15.8 15.8 0 0 0 8.12 11H4.1Zm9.76 8.9c1.04-1.85 1.82-4.28 2.02-6.9h4.02a8.02 8.02 0 0 1-6.04 6.9Z"/></svg>
       </span>
       <div class="ttl">
-        <span class="k">VVL 2026 · SL1M · Pool A · After Round 16</span>
-        <span class="n">Derrimut Knights Red — Road to Top 4</span>
+        <span class="k">VVL 2026 · SL1M · Pool B · After Round 15</span>
+        <span class="n">Derrimut Knights Black — Road to Top 4</span>
       </div>
     </div>
   </div>
@@ -185,17 +186,18 @@
         <div class="vstatus" id="vStatus"></div>
         <div class="vpts">Finishing on <b id="vPts">49</b> points.</div>
         <p class="vdetail" id="vDetail"></p>
-        <span class="gamesleft">Round 16 done — beat Eastside 3–0. One game left, and it's win-or-bust:</span>
+        <span class="gamesleft"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Rounds 14–15 done (won both v Phantoms; R15 bye). 2 games left — both must-win:</span>
         <div class="chips" id="chips"></div>
       </div>
     </section>
 
     <div>
-      <span class="field-label">Scenario · final round</span>
+      <span class="field-label">Scenario</span>
       <div class="segmented" role="group" aria-label="Scenario presets">
-        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>The one way in</button>
-        <button class="seg-btn cau" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Beat VR1, Alliance win</button>
-        <button class="seg-btn cau" data-preset="seed"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Lose to VR1</button>
+        <button class="seg-btn" data-preset="A"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both, to form</button>
+        <button class="seg-btn" data-preset="B"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Win both + the help</button>
+        <button class="seg-btn" data-preset="C"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Dream run</button>
+        <button class="seg-btn cau" data-preset="seed"><svg class="ck" viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>Play to seed</button>
       </div>
       <p class="note body-sm variant" id="presetNote"></p>
     </div>
@@ -203,7 +205,7 @@
     <div class="grid2">
       <section class="card pad">
         <div class="sh">
-          <h2 class="headline">Live Pool A ladder</h2>
+          <h2 class="headline">Live Pool B ladder</h2>
           <span class="overline variant">projected final</span>
         </div>
         <div class="tscroll">
@@ -214,20 +216,20 @@
         </div>
         <div class="legend">
           <span class="sw"><span class="box6" style="background:var(--success)"></span> qualifies (top 4)</span>
-          <span class="sw"><span class="box6" style="background:var(--primary)"></span> Derrimut Red</span>
+          <span class="sw"><span class="box6" style="background:var(--primary)"></span> Derrimut</span>
           <span>ties broken on Set&nbsp;% (assumes 3–1 scorelines)</span>
         </div>
       </section>
 
       <section class="card pad">
         <div class="sh">
-          <h2 class="headline">Round 17 — the decider</h2>
+          <h2 class="headline">Remaining fixtures</h2>
           <span class="overline variant">tap to set winner</span>
         </div>
         <div id="fixtures"></div>
         <div class="legend">
-          <span class="sw"><span class="tag must">MUST-WIN</span> Derrimut's game</span>
-          <span class="sw"><span class="tag swing">ALLIANCE</span> Alliance Black must lose here</span>
+          <span class="sw"><span class="tag must">MUST-WIN</span> Derrimut's games</span>
+          <span class="sw"><span class="tag swing">SWING</span> Alliance / Monash / Storm must drop here</span>
         </div>
       </section>
     </div>
@@ -236,27 +238,31 @@
   </div>
 
 <script>
-// ---- base AFTER Round 16 (Pool A, Volleyball Victoria) ----
+// ---- base AFTER Round 15 (authoritative, Volleyball Victoria) ----
 const T = {
-  VR1:{n:"VR1 Volley",          p:57,sw:44,sl:8, pl:15,rk:1},
-  STR:{n:"Strive",              p:57,sw:42,sl:9, pl:15,rk:2},
-  DNR:{n:"Dandenong Red",       p:51,sw:40,sl:15,pl:15,rk:3},
-  ALB:{n:"Alliance Black",      p:48,sw:38,sl:18,pl:15,rk:4},
-  DKR:{n:"Derrimut Knights Red",p:45,sw:37,sl:17,pl:15,rk:5},
-  MUB:{n:"Monash Uni Blue",     p:45,sw:32,sl:24,pl:15,rk:6},
-  KVA:{n:"KVA Future Stars",    p:38,sw:29,sl:26,pl:15,rk:7},
-  LTB:{n:"La Trobe Uni Black",  p:33,sw:21,sl:35,pl:15,rk:8},
-  EAS:{n:"Eastside Hawks",      p:30,sw:21,sl:35,pl:15,rk:9},
-  HEI:{n:"Heidelberg",          p:28,sw:21,sl:40,pl:16,rk:10},
-  HOR:{n:"Horsham Heat",        p:26,sw:18,sl:36,pl:14,rk:11},
-  RNW:{n:"Renegades White",     p:24,sw:18,sl:41,pl:15,rk:12},
-  MOR:{n:"Mornington",          p:21,sw:14,sl:42,pl:15,rk:13},
-  WRW:{n:"Western Region Wolves",p:14,sw:14,sl:43,pl:15,rk:14},
+  CAR:{n:"Carrum Downs Royals",p:60,sw:45,sl:6, pl:15,rk:1},
+  ALL:{n:"Alliance Gold",      p:44,sw:37,sl:14,pl:14,rk:2},
+  OAK:{n:"Oakleigh",           p:44,sw:35,sl:21,pl:14,rk:3},
+  MON:{n:"Monash Uni Grey",    p:41,sw:33,sl:21,pl:14,rk:4},
+  DAN:{n:"Dandenong White",    p:41,sw:34,sl:22,pl:14,rk:5},
+  VFU:{n:"Volley Friends Utd", p:41,sw:34,sl:24,pl:14,rk:6},
+  MST:{n:"Melbourne Storm",    p:41,sw:34,sl:25,pl:14,rk:7},
+  DER:{n:"Derrimut Knights Black",p:41,sw:29,sl:27,pl:14,rk:8},
+  REN:{n:"Melb Uni Renegades", p:35,sw:26,sl:25,pl:14,rk:9},
+  PHA:{n:"Phantoms",           p:29,sw:23,sl:27,pl:14,rk:10},
+  SGI:{n:"South Gippsland",    p:23,sw:13,sl:38,pl:14,rk:11},
+  YAR:{n:"Yarra Ranges",       p:17,sw:7, sl:40,pl:14,rk:12},
+  MAZ:{n:"Mazenod",            p:16,sw:15,sl:39,pl:15,rk:13},
+  LTR:{n:"La Trobe Uni Red",   p:14,sw:6, sl:42,pl:14,rk:14},
 };
 const R = [
+  {r:16,d:"Sat 01 Aug",g:[
+    {a:"MON",b:"PHA",swing:1},{a:"OAK",b:"ALL",swing:1},{a:"CAR",b:"DAN"},
+    {a:"PHA",b:"REN"},{a:"YAR",b:"LTR"},{a:"VFU",b:"DER",der:1},{a:"SGI",b:"MST",swing:1},
+  ]},
   {r:17,d:"Sat 08 Aug",g:[
-    {a:"DKR",b:"VR1",der:1,tag:"MUST-WIN"},{a:"DNR",b:"ALB",swing:1},{a:"MUB",b:"STR"},
-    {a:"KVA",b:"MOR"},{a:"EAS",b:"WRW"},{a:"HOR",b:"LTB"},{a:"HOR",b:"RNW"},
+    {a:"DER",b:"ALL",der:1},{a:"VFU",b:"YAR"},{a:"MON",b:"LTR",swing:1},
+    {a:"SGI",b:"MAZ"},{a:"DAN",b:"OAK"},{a:"MST",b:"REN",swing:1},
   ]},
 ];
 const ALLG = R.flatMap(rd=>rd.g);
@@ -264,18 +270,20 @@ const winner = g => g.w==="a"?g.a:g.b;
 const loser  = g => g.w==="a"?g.b:g.a;
 
 function toForm(){ ALLG.forEach(g=>{ g.w = T[g.a].rk < T[g.b].rk ? "a":"b"; }); }
+function derWins(){ set("VFU","DER","DER"); set("DER","ALL","DER"); }
 function set(aId,bId,winId){ const g=ALLG.find(x=>x.a===aId&&x.b===bId); if(g) g.w = winId===aId?"a":"b"; }
-const beatVR1 =()=>set("DKR","VR1","DKR");
 
 const PRESETS = {
-  A:{fn:()=>{toForm();beatVR1();},
-     note:"The only route: Derrimut BEAT VR1 (the pool leaders) AND Dandenong Red beat Alliance Black. Both land on 49 — Derrimut take 4th on set ratio (≈69% v 65%). Dandenong over Alliance is the expected result; the mountain is beating VR1."},
-  B:{fn:()=>{toForm();beatVR1();set("DNR","ALB","ALB");},
-     note:"Derrimut do their bit and beat VR1 — but Alliance Black beat Dandenong Red, climbing to 52. Derrimut's 49 leaves them 5th. Beating VR1 is necessary, not sufficient: Alliance must also drop their game."},
+  A:{fn:()=>{toForm();derWins();},
+     note:"Win both remaining, everything else to seeding — but 49 only TIES Monash, Storm, Oakleigh & Alliance, and every one of them beats Derrimut on set ratio. Result: 6th. Winning out is necessary but NOT enough."},
+  B:{fn:()=>{toForm();derWins();set("OAK","ALL","OAK");set("MON","PHA","PHA");},
+     note:"Win both, AND Oakleigh beat Alliance (R16, capping Alliance) AND Phantoms trip Monash (R16). That drops two of the 49-club below Derrimut → 4th and in. Recommended target."},
+  C:{fn:()=>{toForm();derWins();set("OAK","ALL","OAK");set("MON","PHA","PHA");set("MST","REN","REN");set("DAN","OAK","DAN");},
+     note:"As B, plus Storm slip to Renegades (R17) and Oakleigh drop to Dandenong → the pack collapses and Derrimut climb to 3rd."},
   seed:{fn:()=>{toForm();},
-     note:"To seeding: Derrimut lose to VR1 → 46, and can't catch Alliance Black (49). 5th, and out. Nothing short of beating VR1 keeps the season alive."},
+     note:"Straight to seeding: Derrimut lose to Volley Friends & Alliance as underdogs → 43 points, stranded in 8th."},
 };
-let current="A";
+let current="B";
 
 const SVG_CHECK='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1.2 14.2L6.6 12l1.4-1.4 2.8 2.8 5.2-5.2L17.4 9.6z"/></svg>';
 const SVG_CROSS='<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm3.6 12.2L14.2 15.6 12 13.4l-2.2 2.2-1.4-1.4L10.6 12 8.4 9.8l1.4-1.4L12 10.6l2.2-2.2 1.4 1.4L13.4 12z"/></svg>';
@@ -293,11 +301,11 @@ function compute(){
 }
 const ORD=["th","st","nd","rd"];
 const ordSuffix=n=>{const v=n%100;return ORD[(v-20)%10]||ORD[v]||ORD[0];};
-function short(id){return T[id].n.replace("Derrimut Knights Red","Derrimut Red");}
+function short(id){return T[id].n.replace("Volley Friends Utd","Volley Friends").replace("Melb Uni Renegades","Renegades").replace("Derrimut Knights Black","Derrimut Knights");}
 
 function render(){
   const arr=compute();
-  const idx=arr.findIndex(t=>t.id==="DKR"), der=arr[idx], pos=idx+1, inTop4=pos<=4;
+  const idx=arr.findIndex(t=>t.id==="DER"), der=arr[idx], pos=idx+1, inTop4=pos<=4;
 
   const v=document.getElementById("verdict");
   v.className="verdict "+(inTop4?"in":"out");
@@ -305,23 +313,23 @@ function render(){
   document.getElementById("vPos").innerHTML=pos+"<small>"+ordSuffix(pos)+"</small>";
   document.getElementById("vPts").textContent=der.p;
 
-  const tied=arr.filter(t=>t.p===der.p&&t.id!=="DKR");
+  const tied=arr.filter(t=>t.p===der.p&&t.id!=="DER");
   const better=tied.filter(t=>t.pct>der.pct);
   let detail;
   if(inTop4){
-    detail="Derrimut Red finish "+pos+ordSuffix(pos)+" on "+der.p+" points, inside the four.";
-    if(tied.length && !better.length) detail+=" They pip "+tied.map(t=>short(t.id)).join(" & ")+" on the Set % tiebreak — the set ratio is the edge.";
-    else if(better.length) detail+=" Level on points with "+better.map(t=>short(t.id)).join(" & ")+", but held above on the tiebreak.";
+    detail="Derrimut finish "+pos+ordSuffix(pos)+" on "+der.p+" points, inside the four.";
+    if(better.length) detail+=" Level on points with "+better.map(t=>short(t.id)).join(" & ")+", but held above on the tiebreak.";
+    else if(tied.length) detail+=" They win the Set % tiebreak over "+tied.map(t=>short(t.id)).join(" & ")+".";
   } else {
-    detail="Derrimut Red land "+pos+ordSuffix(pos)+" — outside the four.";
-    if(tied.length) detail+=" Level on "+der.p+" with "+tied.map(t=>short(t.id)).join(" & ")+".";
+    detail="Derrimut land "+pos+ordSuffix(pos)+" — outside the four.";
+    if(tied.length) detail+=" Level on "+der.p+" with "+tied.map(t=>short(t.id)).join(", ")+", but Derrimut's weaker set ratio loses the tiebreak.";
     else detail+=" Ahead of them: "+arr.slice(0,4).map(t=>short(t.id)).join(", ")+".";
   }
   document.getElementById("vDetail").textContent=detail;
 
   const ch=document.getElementById("chips"); ch.innerHTML="";
   R.forEach(rd=>rd.g.forEach(g=>{ if(!g.der) return;
-    const opp=g.a==="DKR"?g.b:g.a, won=winner(g)==="DKR";
+    const opp=g.a==="DER"?g.b:g.a, won=winner(g)==="DER";
     const c=document.createElement("div"); c.className="chip "+(won?"win":"loss");
     c.innerHTML=(won?SVG_CHK_SM:SVG_X_SM)+"<span class='cn'><span class='r'>R"+rd.r+"</span><span class='o'>v "+short(opp)+"</span></span>";
     ch.appendChild(c);
@@ -330,7 +338,7 @@ function render(){
   const tb=document.getElementById("ladder"); tb.innerHTML="";
   arr.forEach((t,i)=>{
     const tr=document.createElement("tr");
-    tr.className=(t.id==="DKR"?"der ":"")+(i===3?"cut":"");
+    tr.className=(t.id==="DER"?"der ":"")+(i===3?"cut":"");
     tr.innerHTML="<td class='l pos'>"+(i+1)+"</td><td class='l tname'>"+short(t.id)+(i<4?"<span class='qb'>Q</span>":"")+
       "</td><td>"+t.pl+"</td><td class='pts'>"+t.p+"</td><td>"+(t.pct*100).toFixed(1)+"</td>";
     tb.appendChild(tr);
@@ -354,19 +362,19 @@ function render(){
       btn.addEventListener("click",()=>{g.w=g.w==="a"?"b":"a";current="";sync();render();});
       w.appendChild(btn);
       if(g.der||g.swing){const f=document.createElement("div");f.className="tags";
-        f.innerHTML=(g.der?"<span class='tag must'>"+(g.tag||"MUST-WIN")+"</span>":"")+(g.swing?"<span class='tag swing'>ALLIANCE</span>":"");w.appendChild(f);}
+        f.innerHTML=(g.der?"<span class='tag must'>MUST-WIN</span>":"")+(g.swing?"<span class='tag swing'>SWING</span>":"");w.appendChild(f);}
       gh.appendChild(w);
     });
     box.appendChild(gh); fx.appendChild(box);
   });
 
   document.getElementById("presetNote").textContent = current ? PRESETS[current].note : "Custom — you're editing results by hand.";
-  document.getElementById("foot").innerHTML="<b>Down to the wire.</b> Derrimut Knights Red sit 5th after Round 16 (45 pts) with a single game to play. The top three — VR1, Strive and Dandenong Red — are mathematically locked. The 4th and final finals spot belongs to Alliance Black (48) unless Derrimut can overhaul them, and it now comes down to one do-or-die equation on Round 17: Derrimut must <b>beat VR1</b> — the pool leaders — AND Alliance Black must <b>lose to Dandenong Red</b> the same afternoon. Land both and Derrimut finish level with Alliance on 49 and take 4th on set ratio (≈69% v 65%). Miss either — lose to VR1, or watch Alliance win — and it's 5th and out. Dandenong beating Alliance is the expected result; the mountain to climb is VR1.";
+  document.getElementById("foot").innerHTML="<b>Where it stands.</b> After Round 15 the middle of Pool B is a five-team pile-up on 41 — Monash Grey, Dandenong White, Volley Friends, Melbourne Storm and Derrimut — and Derrimut have the weakest set ratio of the group, so they lose every tie. Carrum are gone (1st); Alliance and Oakleigh (both 44) are near-locks for two more spots. Derrimut's ceiling is <b>49</b>, and winning their last two (Volley Friends, Alliance) isn't enough on its own, because 49 only ties four rivals who all edge them on sets. <b>So Derrimut must win both AND have the pack stumble</b> — beating Volley Friends caps them at 46, but Monash (easy run v Phantoms & La Trobe) and Storm (v South Gippsland & Renegades) must each drop a game, and Oakleigh needs to beat Alliance. Straight-sets wins also lift Derrimut's set ratio for any tie that survives.";
 }
 function sync(){document.querySelectorAll(".seg-btn").forEach(b=>b.classList.toggle("on",b.dataset.preset===current));}
 document.querySelectorAll(".seg-btn").forEach(b=>b.addEventListener("click",()=>{current=b.dataset.preset;PRESETS[current].fn();sync();render();}));
 
-PRESETS.A.fn(); current="A"; sync(); render();
+PRESETS.B.fn(); current="B"; sync(); render();
 </script>
 </body>
 </html>
